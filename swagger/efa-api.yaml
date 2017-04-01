@@ -1,0 +1,12 @@
+---
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: EFA API
+paths:
+  /participants:
+    get:
+      summary: Retrieves every participant
+      responses:
+        200:
+          description: OK
