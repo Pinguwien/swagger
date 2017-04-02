@@ -3,6 +3,14 @@ swagger: '2.0'
 info:
   version: 1.0.0
   title: EFA API
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+host: localhost:8000
+consumes:
+  - application/json
+produces:
+  - application/json
 paths:
   /participants:
     get:
@@ -30,6 +38,8 @@ paths:
       responses:
         '200':
           description: 'Fetch a participant by ID'
+          schema:
+            $ref: '#/definitions/Participant'
     delete:
       parameters:
         - in: path
@@ -46,3 +56,15 @@ definitions:
     properties:
       firstname: { type: string }
       lastname: { type: string }
+
+  Participant:
+    type: object
+    properties:
+      firstname: { type: string }
+      lastname: { type: string }
+      personalid: { type: string }
+      participations: {
+        type: array,
+        items: { type: object }
+      }
+      outputindicators: { type: object }
