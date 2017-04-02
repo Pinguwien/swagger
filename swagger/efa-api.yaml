@@ -9,4 +9,40 @@ paths:
       summary: Retrieves every participant
       responses:
         200:
-          description: OK
+          description: 'Fetches a list of participants'
+    post:
+      parameters:
+        - in: body
+          name: participant
+          required: true
+          schema:
+            $ref: '#/definitions/ParticipantRegistration'
+      responses:
+        '201':
+          description: 'Add a new participant'
+  '/participants/{id}':
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 'Fetch a participant by ID'
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: string
+      responses:
+        '204':
+          description: 'Delete a participant by ID'
+
+definitions:
+  ParticipantRegistration:
+    type: object
+    properties:
+      firstname: { type: string }
+      lastname: { type: string }
